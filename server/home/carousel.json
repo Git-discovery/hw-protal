@@ -1,0 +1,14 @@
+ [
+  {
+    "index": 1,
+    "path": "http://localhost:9000/assets/img/csr-2020-cn.jpg"
+  },
+  {
+    "index": 2,
+    "path": "http://localhost:9000/assets/img/vmall.jpg"
+  },
+  {
+    "index": 3,
+    "path": "http://localhost:9000/assets/img/hwcloud-ent-interest.jpg"
+  }
+]

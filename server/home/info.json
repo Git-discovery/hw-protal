@@ -1,0 +1,51 @@
+[
+    {
+        "index": 1,
+        "tag": "产品",
+        "name": "HUAWEI MateView",
+        "sub": "无线-原色显示器",
+        "path": "http://localhost:9000/assets/img/mateview_cn.jpg"
+    },
+    {
+        "index": 2,
+        "tag": "产品",
+        "name": "HUAWEI FreeBuds 4 无线耳机",
+        "sub": "轻盈舒适，独享好声音",
+        "path": "http://localhost:9000/assets/img/freebuds_4_cn.jpg"
+    },
+    {
+        "index": 3,
+        "tag": "产品",
+        "name": "HUAWEI WATCH 3",
+        "sub": "一表万象",
+        "path": "http://localhost:9000/assets/img/huawei_watch_3_cn.jpg"
+    },
+    {
+        "index": 4,
+        "tag": "产品",
+        "name": "HUAWEI MatePad Pro",
+        "sub": "创造无界",
+        "path": "http://localhost:9000/assets/img/MatePad_Pro_cn2.jpg"
+    },
+    {
+        "index": 5,
+        "tag": "行业洞察",
+        "name": "迈向智能世界2030",
+        "sub": "华为徐文伟发布迈向智能世界2030的九大技术挑战与研究方向",
+        "path": "http://localhost:9000/assets/img/william-xu.jpg"
+    },
+    {
+        "index": 6,
+        "tag": "解决方案",
+        "name": "OceanStor 全闪存数据中心",
+        "sub": "数据加速、数据安全、数据绿色节能",
+        "path": "http://localhost:9000/assets/img/all-flash-data-center2.jpg"
+    },
+    {
+        "index": 7,
+        "tag": "案例",
+        "name": "数字北京",
+        "sub": "共筑城市智能体，点亮孪生新未来",
+        "path": "http://localhost:9000/assets/img/digital-beijing2.jpg"
+    }
+]

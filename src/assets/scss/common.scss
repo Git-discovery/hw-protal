@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+$max-index: 99 !default;
+$max-opacity: 5 !default;
+$bg-color-white: #fff !default;
+$primary: #409EFF !default;
+$black: #000 !default;
+
+a {
+  text-decoration: none !important;
+}
+ul,li,ol,div {
+  user-select: none;
+}
+// 层叠样式
+.cascading {
+    z-index: $max-opacity;
+    background-color: $bg-color-white;
+    opacity: $max-opacity;
+  }
+.container-custom {
+  margin-top: 30px;
+  margin-left:10%;
+  margin-bottom: 30px;
+  margin-right: 10%;
+}
+
+.container-fluid-box {
+  width: 100%;
+  margin: 0px !important;
+}
+.linestyle:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: $black;
+    text-decoration-thickness: 2px;
+}
+.v-modal {
+  top: 92px !important;
+}
