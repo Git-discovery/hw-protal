@@ -1,12 +1,5 @@
 <!-- 个人及家庭产品 -->
 <template>
-  <el-drawer
-    id="drawer"
-    direction="ttb"
-    :withHeader="false"
-    :size="'60%'"
-    :visible.sync="visible"
-  >
     <div class="container-fluid-box position-fixed cascading">
       <div class="container-custom">
         <div class="row">
@@ -30,36 +23,21 @@
           </div>
         </div>
       </div>
-      <div class="row nav-footer">
-        <div class="col-md-6 float-start">
-          <div class="container-custom" style="margin-left: 20%">
-            <div class="row">
-              <div class="col-md-4 linestyle">消费者业务网站</div>
-              <div class="col-md-4 linestyle">华为商城</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="container-custom">
-            <button
-              type="button"
-              class="btn-close"
-              aria-label="Close"
-              @click="handleClose"
-            ></button>
-          </div>
-        </div>
-      </div>
+      <content-footer></content-footer>
     </div>
-  </el-drawer>
 </template>
 
 <script lang="ts">
 import { Component, PropSync, Vue } from 'vue-property-decorator';
 import matex2 from '@/assets/img/matex2.jpg';
 import { getFileName } from '@/utils';
+import ContentFooter from './ContentFooter.vue';
 
-@Component
+@Component({
+  components: {
+    ContentFooter,
+  },
+})
 export default class Family extends Vue {
   private src: string = matex2;
 
@@ -69,12 +47,6 @@ export default class Family extends Vue {
 
   @PropSync('drawer', { type: Boolean })
   private visible!: boolean;
-
-  private handleClose() {
-    this.visible = false;
-    this.$emit('update:active', '');
-    // this.activeName = '';
-  }
 }
 </script>
 
@@ -88,10 +60,6 @@ export default class Family extends Vue {
     cursor: pointer;
   }
 }
-#drawer.el-drawer__wrapper {
-  top: 91px !important;
-}
-
 </style>
 <style lang="scss">
 .col-md-2-4 {

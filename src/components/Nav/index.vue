@@ -46,11 +46,19 @@
         <span><i class="el-icon-search"></i></span>
       </li>
     </el-menu>
-    <component
-      :is="activeName"
-      :drawer.sync="drawer"
-      :active.sync="activeName"
-    ></component>
+    <keep-alive>
+      <el-drawer
+        id="drawer"
+        direction="ttb"
+        :withHeader="false"
+        :size="'60%'"
+        :visible.sync="visible"
+      >
+        <component
+          :is="activeName"
+        ></component>
+      </el-drawer>
+    </keep-alive>
   </nav>
 </template>
 
@@ -58,11 +66,14 @@
 import { Component, Vue } from 'vue-property-decorator';
 import src from '@/assets/img/huawei_logo.png';
 import { getFileName } from '@/utils';
+import { namespace } from 'vuex-class';
 import Family from './Family.vue';
 import Commerial from './Commerial.vue';
 import Support from './Support.vue';
 import Developer from './Developer.vue';
 import About from './About.vue';
+
+const navState = namespace('nav');
 
 @Component({
   components: {
@@ -78,9 +89,11 @@ export default class NavBar extends Vue {
 
   private alt: string = getFileName(src);
 
-  private activeName = '';
+  @navState.State('activeName')
+  private activeName!: string;
 
-  private drawer = false;
+  @navState.State('visible')
+  private visible!: boolean;
 
   private mounted(): void {
     this.$children.forEach((val) => {
@@ -89,7 +102,10 @@ export default class NavBar extends Vue {
         val.$children.forEach((item) => {
           // item
           item.$el.addEventListener('mouseover', () => {
-            this.handleTabActive(item.$props.index);
+            this.$store.commit('nav/trigger', {
+              activeName: item.$props.index,
+              visible: true,
+            });
           });
         });
       }
@@ -97,12 +113,14 @@ export default class NavBar extends Vue {
   }
 
   private handleTabActive(path: string) {
-    this.activeName = `${path}`;
-    this.drawer = true;
+    this.$store.commit('nav/trigger', {
+      activeName: path,
+      visible: true,
+    });
   }
 
   private handleClose(index: string) {
-    this.activeName = index;
+    this.$store.commit('nav/init');
   }
 }
 </script>
@@ -150,5 +168,8 @@ export default class NavBar extends Vue {
       cursor: pointer;
     }
   }
+}
+#drawer.el-drawer__wrapper {
+  top: 91px !important;
 }
 </style>
