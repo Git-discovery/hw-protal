@@ -1,10 +1,15 @@
-<template>
+<template functional>
   <div class="row nav-footer">
     <div class="col-md-6 float-start">
       <div class="container-custom" style="margin-left: 20%">
         <div class="row">
-          <div class="col-md-4 linestyle">消费者业务网站</div>
-          <div class="col-md-4 linestyle">华为商城</div>
+          <div
+            :class="data.class"
+            v-for="(item, key) in props.innerHtmls"
+            :key="key"
+          >
+            {{ item }}
+          </div>
         </div>
       </div>
     </div>
@@ -14,7 +19,7 @@
           type="button"
           class="btn-close"
           aria-label="Close"
-          @click="handleClose"
+          v-on="listeners"
         ></button>
       </div>
     </div>
@@ -26,11 +31,12 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ContentFooter extends Vue {
-  private handleClose() {
-    this.$store.commit('nav/init');
-  }
+
 }
 </script>
 
 <style scoped>
+.nav-footer {
+  background-color: #f7f7f7;
+}
 </style>

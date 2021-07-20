@@ -8,7 +8,6 @@
       :default-active="activeName"
       mode="horizontal"
       @select="handleTabActive"
-      @close="handleClose"
     >
       <el-menu-item index="Family">
         <template slot="title">个人及家庭产品</template>
@@ -46,19 +45,18 @@
         <span><i class="el-icon-search"></i></span>
       </li>
     </el-menu>
-    <keep-alive>
-      <el-drawer
-        id="drawer"
-        direction="ttb"
-        :withHeader="false"
-        :size="'60%'"
-        :visible.sync="visible"
-      >
-        <component
-          :is="activeName"
-        ></component>
-      </el-drawer>
-    </keep-alive>
+    <el-drawer
+      id="drawer"
+      direction="ttb"
+      :withHeader="false"
+      :size="'60%'"
+      :visible="visible"
+      @close="handleDrawerClose"
+    >
+      <keep-alive>
+        <component :is="activeName"></component>
+      </keep-alive>
+    </el-drawer>
   </nav>
 </template>
 
@@ -102,10 +100,7 @@ export default class NavBar extends Vue {
         val.$children.forEach((item) => {
           // item
           item.$el.addEventListener('mouseover', () => {
-            this.$store.commit('nav/trigger', {
-              activeName: item.$props.index,
-              visible: true,
-            });
+            this.handleTabActive(item.$props.index);
           });
         });
       }
@@ -119,7 +114,7 @@ export default class NavBar extends Vue {
     });
   }
 
-  private handleClose(index: string) {
+  private handleDrawerClose() {
     this.$store.commit('nav/init');
   }
 }

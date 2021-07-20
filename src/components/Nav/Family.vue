@@ -1,6 +1,6 @@
 <!-- 个人及家庭产品 -->
 <template>
-    <div class="container-fluid-box position-fixed cascading">
+    <div class="container-fluid-box position-fixed">
       <div class="container-custom">
         <div class="row">
           <div class="col-md-6">
@@ -23,12 +23,15 @@
           </div>
         </div>
       </div>
-      <content-footer></content-footer>
+      <content-footer
+      :class="['col-md-4', 'linestyle']"
+      :innerHtmls="['消费者业务网站', '华为商城']"
+      @click="handleClose"></content-footer>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, PropSync, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import matex2 from '@/assets/img/matex2.jpg';
 import { getFileName } from '@/utils';
 import ContentFooter from './ContentFooter.vue';
@@ -45,8 +48,9 @@ export default class Family extends Vue {
 
   private href: string | null = '';
 
-  @PropSync('drawer', { type: Boolean })
-  private visible!: boolean;
+  private handleClose() {
+    this.$store.commit('nav/init');
+  }
 }
 </script>
 
@@ -72,8 +76,5 @@ export default class Family extends Vue {
     // text-decoration-color: #000;
     text-decoration-thickness: 2px;
   }
-}
-.nav-footer {
-  background-color: #f7f7f7;
 }
 </style>
